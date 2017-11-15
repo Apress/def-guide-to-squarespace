@@ -1,0 +1,60 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+//Anchor link fix
+ function anchorLinks(){
+  Y.all("a.Mobile-overlay-nav-item").on('click', function() {
+    Y.one('body').removeClass('is-mobile-overlay-active');
+  });
+  Y.all("a.Mobile-overlay-folder-item").on('click', function() {
+   Y.one('body').removeClass('is-mobile-overlay-active');
+  });
+}
+
+function scrollToURLAnchor(){
+ setTimeout(function(){
+   if(window.location.hash){
+
+     $('html, body').animate({
+         scrollTop: $(window.location.hash).offset().top
+     }, 500,  function () {
+
+     });
+   }
+   }, 500);
+}
+
+ // DOM Ready
+ Y.on('domready', function(){
+   anchorLinks()
+ });
+
+//RSD Mutation Observer wrapper
+function RSD_init(){
+ anchorLinks();
+}
+
+// add watch function to window.onload
+window.onload = RSD_watch;
+
+//watch function to look for page changes using Mutation Observer
+function RSD_watch() {
+   MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
+
+   var mo = new MutationObserver(function(mo) {
+       var moCount = 0;
+       for (var b = 0; b < mo.length; b++) {
+           var c =mo[b];
+
+           if ("attributes" === c.type  && moCount === 0) {
+             RSD_init();
+
+           }
+        }
+
+  });
+
+var options = { attributes : true, attributeFilter : ['id']};
+
+mo.observe(document.body, options);
+}
+</script>

@@ -1,0 +1,20 @@
+<script>
+$(function(){
+  $('.summary-item').each(function(){
+    var cat = $(this).find('.summary-metadata-item--cats a').html();
+    $(this).addClass(cat);
+  });
+
+
+  var $grid =   $('.summary-item-list').isotope({
+    // options
+    itemSelector: '.summary-item'
+  });
+
+  $('.filter-button-group').on( 'click', 'button', function() {
+    var filterValue = $(this).attr('data-filter');
+    $grid.isotope({ filter: filterValue });
+  });
+
+});
+</script>

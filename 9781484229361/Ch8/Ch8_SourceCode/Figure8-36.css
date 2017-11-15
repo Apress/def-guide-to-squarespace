@@ -1,0 +1,11 @@
+#block-yui_3_17_2_3_1500835633766_27678{
+  .slide .image-slide-title{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 30px;
+    color: #ffffff;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+  }
+}

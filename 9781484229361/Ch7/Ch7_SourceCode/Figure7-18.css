@@ -1,0 +1,25 @@
+.info_head:after {
+  content: '\02795';
+  font-size: 13px;
+  color: #777;
+  float: right;
+  margin-left: 5px;
+}
+
+.info_head.active:after {
+  content: "\2796";
+}
+
+.info_head{
+  border-top: 1px solid #ccc;
+  padding: 15px 0;
+  margin: 0;
+}
+
+.info_head.active{
+  border-bottom: 1px solid #ccc;
+}
+
+.info_head.last{
+  border-bottom: 1px solid #ccc;
+}

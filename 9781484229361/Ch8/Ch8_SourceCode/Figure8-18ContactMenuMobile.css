@@ -1,0 +1,7 @@
+body .Mobile-overlay-nav--secondary .Mobile-overlay-nav-item[href="/contact/"]{
+  border: 1px solid #000;
+  display: inline-block;
+  border-radius: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+}

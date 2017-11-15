@@ -1,0 +1,70 @@
+<!-- HTML Comment Box Styles -->
+<link rel="stylesheet" type="text/css" href="//www.htmlcommentbox.com/static/skins/skeleton/skin.css" />
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- HTML Comment box dom ready script -->
+ <script type="text/javascript" id="hcb">
+   if(!window.hcb_user){hcb_user={};}
+   (function(){var s=document.createElement("script"), l=hcb_user.PAGE || (""+window.location).replace(/'/g,"%27"), h="//www.htmlcommentbox.com";
+   s.setAttribute("type","text/javascript");s.setAttribute("src", h+"/jread?page="+encodeURIComponent(l).replace("+","%2B")+"&mod=%241%24wq1rdBcg%24.vdBkbSL28H.jpJLbYPw8."+"&opts=278&num=10&ts=1499202414624");
+   if (typeof s!="undefined") document.getElementsByTagName("head")[0].appendChild(s);})();
+ </script>
+
+<script>
+//Create accordion function
+function accordionInit(){
+  $('.info_text:not(:nth-child(2))').slideUp();
+  $('.info_head:nth-child(1)').addClass('active');
+
+  $('.info_head').click(function(){
+    $('.info_head').removeClass('active');
+    $('.info_text').slideUp();
+    $(this).addClass('active');
+    $(this).next().slideDown();
+  });
+}
+
+//use dom ready script for accordion function
+$(document).ready(function() {
+  accordionInit();
+});
+
+//Set up Mutation Observer wrapper
+function RSD_init(){
+  //call accordion function
+  accordionInit();
+
+  //call HTML comment box script
+  if(!window.hcb_user){hcb_user={};}
+  (function(){var s=document.createElement("script"), l=hcb_user.PAGE || (""+window.location).replace(/'/g,"%27"), h="//www.htmlcommentbox.com";
+  s.setAttribute("type","text/javascript");s.setAttribute("src", h+"/jread?page="+encodeURIComponent(l).replace("+","%2B")+"&mod=%241%24wq1rdBcg%24.vdBkbSL28H.jpJLbYPw8."+"&opts=278&num=10&ts=1499202414624");
+  if (typeof s!="undefined") document.getElementsByTagName("head")[0].appendChild(s);})();
+}
+
+
+
+// add watch function to window.onload
+window.onload = RSD_watch;
+
+//watch function to look for page changes using Mutation Observer
+function RSD_watch() {
+    MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
+
+    var mo = new MutationObserver(function(mo) {
+    var moCount = 0;
+    for (var b = 0; b < mo.length; b++) {
+      var c =mo[b];
+
+      if ("attributes" === c.type  && moCount === 0) {
+        RSD_init();
+        moCount++;
+      }
+    }
+
+  });
+
+  var options = { attributes : true, attributeFilter : ['id']};
+  mo.observe(document.body, options);
+}
+</script>

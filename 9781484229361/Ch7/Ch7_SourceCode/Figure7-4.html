@@ -1,0 +1,29 @@
+<script>
+//RSD Mutation Observer wrapper
+function RSD_init(){
+  //functions to call when mutation observer recognizes page change
+}
+
+window.onload = RSD_watch;
+
+//watch function to look for page changes using Mutation Observer
+function RSD_watch() {
+  MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
+
+  var mo = new MutationObserver(function(mo) {
+    var moCount = 0;
+    for (var b = 0; b < mo.length; b++) {
+      var c =mo[b];
+
+      if ("attributes" === c.type  && moCount === 0) {
+        RSD_init();
+        moCount++;
+      }
+    }
+ });
+
+  var options = { attributes : true, attributeFilter : ['id']};
+
+  mo.observe(document.body, options);
+}
+</script>
